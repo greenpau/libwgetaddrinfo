@@ -8,7 +8,7 @@ Preliminary questions:
 If the answer to the above questions is "YES", then this repo
 is for you.
 
-:note: This library is to be used at your own risk.
+:warning: This library is to be used at your own risk.
 
 It should prevent you from having `AAAA` queries. Please understand
 this is due to applications using `AF_UNSET` for `ai_family`, and DNS
@@ -38,6 +38,15 @@ With `LD_PRELOAD`:
 Capturing on eth0
    0.000000  10.10.56.5 -> 172.16.52.6 DNS Standard query A xxx.yyy.redhat.com
    0.000967 172.16.52.6 -> 10.10.56.5  DNS Standard query response A 10.11.5.7
+```
+
+## Building from Source
+
+The following sequence of commands build the library:
+
+```bash
+git clone https://github.com/greenpau/libwgetaddrinfo.git
+cd libwgetaddrinfo && make
 ```
 
 References:
