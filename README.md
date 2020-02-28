@@ -8,6 +8,20 @@ Preliminary questions:
 If the answer to the above questions is "YES", then this repo
 is for you.
 
+**What is the issue?**
+
+As discussed [here](https://bugs.launchpad.net/ubuntu/+source/eglibc/+bug/417757?comments=all),
+when an application on IPv6 enabled hosts tries to look up an address
+for a host, the following happens:
+
+1. The application asks for a AAAA record with `getaddrinfo()`
+2. The DNS resolver sees the request for the AAAA record, goes "uhmmm I dunno what it is, lets throw it away"
+3. DNS client (`getaddrinfo()` in libc) waits for a response..... has
+  to time out as there is no response. (THIS IS THE DELAY)
+4. No records received yet, thus getaddrinfo() goes for a the A record
+  request. This works.
+5. Program gets the A records and uses those.
+
 :warning: This library is to be used at your own risk.
 
 It should prevent you from having `AAAA` queries. Please understand
