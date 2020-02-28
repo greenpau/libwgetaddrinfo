@@ -16,11 +16,11 @@ servers not handling `AAAA` records correctly.
 
 ## Purpose
 
-IPv6 lookup avoidance by `LD_PRELOAD=libwgetaddrinfo.so`.
+By using the `LD_PRELOAD=libwgetaddrinfo.so`, a system avoids making
+IPv6 lookups. However, `getaddrinfo()` will perform IPv4 and IPv6
+lookups when using `AF_UNSET`.
 
-`getaddrinfo()` will perform IPv4 and IPv6 lookups when using `AF_UNSET`.
-
-Without `LD_PRELOAD`:
+For example, this is the trace of DNS queries without `LD_PRELOAD=libwgetaddrinfo.so` set:
 
 ```
 Capturing on eth0
@@ -32,7 +32,7 @@ Capturing on eth0
    0.007776 172.16.52.6 -> 10.10.56.5  DNS Standard query response A 10.11.5.7
 ```
 
-With `LD_PRELOAD`:
+With `LD_PRELOAD=libwgetaddrinfo.so` set:
 
 ```
 Capturing on eth0
@@ -42,7 +42,7 @@ Capturing on eth0
 
 ## Building from Source
 
-The following sequence of commands build the library:
+The following sequence of commands builds the library:
 
 ```bash
 git clone https://github.com/greenpau/libwgetaddrinfo.git
