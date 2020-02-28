@@ -63,7 +63,29 @@ git clone https://github.com/greenpau/libwgetaddrinfo.git
 cd libwgetaddrinfo && make
 ```
 
-References:
+## Installation
+
+Once you have `libwgetaddrinfo.so.1.0`, run the following commant.
+It creates `/etc/ld.so.conf.d/libwgetaddrinfo.conf`. The file points
+to the library directory `/usr/local/lib/libwgetaddrinfo/lib/`.
+
+```bash
+make install
+```
+
+The directory contains the `libwgetaddrinfo.so.1.0` and two symbolic links:
+
+```bash
+$ ls -alh /usr/local/lib/libwgetaddrinfo/lib/
+total 12K
+.
+..
+libwgetaddrinfo.so -> /usr/local/lib/libwgetaddrinfo/lib/libwgetaddrinfo.so.1
+libwgetaddrinfo.so.1 -> /usr/local/lib/libwgetaddrinfo/lib/libwgetaddrinfo.so.1.0
+libwgetaddrinfo.so.1.0
+```
+
+## References
 
 * [The LD_PRELOAD trick](http://www.goldsborough.me/c/low-level/kernel/2016/08/29/16-48-53-the_-ld_preload-_trick/)
 * [https://bugs.launchpad.net/ubuntu/+source/eglibc/+bug/417757/comments/98](https://bugs.launchpad.net/ubuntu/+source/eglibc/+bug/417757/comments/98)
