@@ -65,15 +65,14 @@ cd libwgetaddrinfo && make
 
 ## Installation
 
-Once you have `libwgetaddrinfo.so.1.0`, run the following commant.
-It creates `/etc/ld.so.conf.d/libwgetaddrinfo.conf`. The file points
-to the library directory `/usr/local/lib/libwgetaddrinfo/lib/`.
+Once you have `libwgetaddrinfo.so.1.0`, run the following command.
 
 ```bash
 make install
 ```
 
-The directory contains the `libwgetaddrinfo.so.1.0` and two symbolic links:
+The command creates the below directory and places the `libwgetaddrinfo.so.1.0`
+in it, together with two symbolic links:
 
 ```bash
 $ ls -alh /usr/local/lib/libwgetaddrinfo/lib/
@@ -83,6 +82,12 @@ total 12K
 libwgetaddrinfo.so -> /usr/local/lib/libwgetaddrinfo/lib/libwgetaddrinfo.so.1
 libwgetaddrinfo.so.1 -> /usr/local/lib/libwgetaddrinfo/lib/libwgetaddrinfo.so.1.0
 libwgetaddrinfo.so.1.0
+```
+
+Next, add the following to `/etc/ld.so.preload`
+
+```
+/usr/local/lib/libwgetaddrinfo/lib/libwgetaddrinfo.so
 ```
 
 ## References

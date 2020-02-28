@@ -12,9 +12,8 @@ clean:
 	rm -f $(LIB_NAME).so*
 
 install:
-	@sudo mkdir -p $(LIB_PATH)
-	@sudo cp $(LIB_NAME).so.1.0 $(LIB_PATH)/
-	@sudo cp ld.so.conf.d/$(LIB_NAME).conf /etc/ld.so.conf.d/
-	@sudo ln -s $(LIB_PATH)/$(LIB_NAME).so.1.0 $(LIB_PATH)/$(LIB_NAME).so.1 2>/dev/null
-	@sudo ln -s $(LIB_PATH)/$(LIB_NAME).so.1 $(LIB_PATH)/$(LIB_NAME).so 2>/dev/null
-	@sudo ldconfig
+	sudo rm -rf $(LIB_PATH)
+	sudo mkdir -p $(LIB_PATH)
+	sudo cp $(LIB_NAME).so.1.0 $(LIB_PATH)/
+	sudo ln -s $(LIB_PATH)/$(LIB_NAME).so.1.0 $(LIB_PATH)/$(LIB_NAME).so.1 2>/dev/null
+	sudo ln -s $(LIB_PATH)/$(LIB_NAME).so.1 $(LIB_PATH)/$(LIB_NAME).so 2>/dev/null
